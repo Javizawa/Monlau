@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="test1">ESTO ES UNA PRUEBA</p>
+    <script>
+        let test = "hola";
+        if(document.getElementById("test1").innerHTML=="TEST"){
+            document.getElementById("test1").innerHTML="ES TEST";
+            var a = "ESTO ES OTRA PRUEBA";
+        } else{
+            document.getElementById("test1").innerHTML="NO ES TEST";
+            document.getElementById("test1").innerHTML=test;
+        }
+
+        //GET
+        //https://reqbin.com/code/javascript/wzp2hxwh/javascript-post-request-example
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://reqres.in/api/users/2");
+        xhr.responseType = 'json';
+        xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) { //Cuando termina de cargarse
+            console.log(xhr.response.data);
+            //console.log(xhr.response.data.email);
+        }};
+        xhr.send();
+
+        //POST
+        let xhrpost = new XMLHttpRequest();
+        xhrpost.open("POST", "https://reqres.in/api/users");
+        xhrpost.setRequestHeader("Content-type", "application/json");
+        xhrpost.onreadystatechange = function () {
+        if (xhrpost.readyState === 4) {
+            console.log(xhrpost.status);
+            console.log(xhrpost.responseText);
+        }};
+
+        let object = {name:'Javier', job:'leader'};
+
+        xhrpost.send(JSON.stringify(object));
+
+
+        //PUT
+        let xhrput = new XMLHttpRequest();
+        xhrput.open("PUT", "https://reqres.in/api/users/2");
+        xhrput.setRequestHeader("Content-type", "application/json");
+        xhrput.onreadystatechange = function () {
+        if (xhrput.readyState === 4) {
+            console.log(xhrput.status);
+            console.log(xhrput.responseText);
+        }};
+
+        let objectput = {name:'Javier', job:'leader'};
+
+        xhrput.send(JSON.stringify(objectput));
+
+        //DELETE
+        let xhrdelete = new XMLHttpRequest();
+        xhrdelete.open("DELETE", "https://reqres.in/api/users/2");
+        xhrdelete.responseType = 'json';
+        xhrdelete.onreadystatechange = function () {
+            if (xhrdelete.readyState === 4) { //Cuando termina de cargarse
+                if(xhrdelete.status == 204){
+                    console.log(xhrdelete.status);
+                    console.log("Borrado correctamente");
+                }
+                }};
+        xhrdelete.send();
+
+
+    </script>
+</body>
+</html>
