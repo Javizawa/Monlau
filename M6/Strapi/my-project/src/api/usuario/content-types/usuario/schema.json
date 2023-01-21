@@ -16,6 +16,12 @@
     },
     "Nombre": {
       "type": "string"
+    },
+    "departments": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::department.department",
+      "inversedBy": "usuarios"
     }
   }
 }
