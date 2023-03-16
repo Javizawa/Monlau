@@ -1,0 +1,20 @@
+<div class="card highlight-card card-small">
+  <p>Show Products</p>
+</div>
+
+<table class="tbl1" style="width:100%">
+  <thead>
+    <tr> 
+        <th>NOMBRE</th>
+        <th>PRECIO</th>
+    </tr>
+  </thead>
+  <tbody>
+  <ng-container *ngFor="let product of products">
+    <tr>
+      <td>{{product.name}}</td>
+      <td>{{product.price}}</td>
+    </tr>
+  </ng-container>
+</tbody>
+</table>

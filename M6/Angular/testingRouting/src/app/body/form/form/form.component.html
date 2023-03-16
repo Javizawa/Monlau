@@ -1,0 +1,61 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<div class="container text-center">      
+    <h2>FORMULARIO DE INSCRIPCIÓN</h2>      
+    <div class="row justify-content-md-center">
+        <div>
+            <form [formGroup]="MyNewForm" (ngSubmit)="Clic(MyNewForm.value)"> 
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Nombre</span>
+                    </div>
+                    <input type="text" class="form-control" name="nombre" formControlName="nombre" >  
+                </div>
+                  <div *ngIf="nombre.invalid" class="alert alert-danger">El campo Nombre es obligatorio.</div>
+
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Apellido1</span>
+                    </div>
+                    <input type="text" class="form-control" name="apellido1" formControlName="apellido1" >  
+                </div>
+                  <div *ngIf="(apellido1.value == '' || apellido1.errors?.['minlength'] || apellido1.errors?.['maxlength'])" class="alert alert-danger">el campo Apellido1 tiene que tener entre 3 y 10 caracteres.</div>
+
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Apellido2</span>
+                    </div>
+                    <input type="text" class="form-control" name="apellido2" formControlName="apellido2" >  
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Fecha de Nacimiento</span>
+                    </div>
+                    <input type="date" class="form-control" name="fnacimiento" formControlName="fnacimiento" >  
+                </div>
+
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text"  >Color Favorito</label>
+                    </div>
+                    <select class="form-control" formControlName="color" [class.is-invalid]="color.invalid" [class.is-valid]="color.valid">
+                      <option selected value="Naranja">Naranja</option>
+                      <option value="Azul">Azul</option>
+                      <option value="Negro">Negro</option>
+                      <option value="Rojo">Rojo</option>
+                    </select>
+                  </div>
+
+
+                <div class="form-check"> 
+                    <input class="form-check-input" type="checkbox" name="adulto" formControlName="adulto">
+                    <label class="form-check-label">Confirmo  que tengo más de 18 años</label>
+                </div>                  
+                <button type="submit" [disabled]="MyNewForm.invalid">   Enviar</button> 
+            </form>
+        </div>
+    </div>   
+</div>
+                    
